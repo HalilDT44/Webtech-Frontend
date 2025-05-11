@@ -1,27 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div>
+    <h1>Meine Früchte</h1>
+    <ItemList :items="fruits" />
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+<script>
+import ItemList from './components/ItemList.vue'
 
-export default defineComponent({
+export default {
   name: 'App',
   components: {
-    HelloWorld
+    ItemList
+  },
+  data() {
+    return {
+      fruits: ['Apfel', 'Banane', 'Kirsche']
+    }
   }
-});
+}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+h1 {
+  font-family: Arial, sans-serif;
 }
 </style>
