@@ -10,21 +10,21 @@ export default {
   name: 'App',
   data() {
     return {
-      fruits: []
-    };
-  },
-  mounted() {
-    const baseUrl = process.env.VUE_APP_BACKEND_BASE_URL;
-    const endpoint = `${baseUrl}/api/fruits`;
+         fruits: []Add commentMore actions
+          };
+        },
+        mounted() {
+          const baseUrl = process.env.VUE_APP_BACKEND_BASE_URL;
+          const endpoint = `${baseUrl}/api/fruits`; // ← ggf. ändern auf `/api/fruits` wenn du später andere Daten holst
 
-    fetch(endpoint)
-          .then(response => response.json()) // ✅ richtige Methode
-          .then(data => {
-            this.fruits = data; // ✅ direkt zuweisen
-          })
-          .catch(error => {
-            console.error('Fehler beim Laden der Daten:', error);
-          });
+          fetch(endpoint)
+            .then(response => response.text())
+            .then(data => {
+              this.fruits = [data]; // oder JSON.parse(data) falls es ein Array ist
+            })
+            .catch(error => {
+              console.error('Fehler beim Laden der Daten:', error);
+            });
   }
 };
 </script>
